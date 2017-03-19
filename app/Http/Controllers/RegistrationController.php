@@ -7,15 +7,12 @@ use Illuminate\Http\Request;
 
 class RegistrationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+
+
+    public function __construct(){
+        $this->middleware('guest');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,16 +30,16 @@ class RegistrationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|unique:users,email',
             'password' => 'required|confirmed|min:4',
         ]);
-
         $user = User::create(request(['name', 'email', 'password']));
-
+        $user->password = bcrypt($user->password);
+        $user->save();
         auth()->login($user);
 
         return redirect()->home();

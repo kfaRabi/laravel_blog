@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
+    
+    public function __construct(){
+        $this->middleware('auth')->only('create');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -67,9 +72,16 @@ class PostsController extends Controller
         $post->save();
         */
 
-        //best & shortest way:
+        //best & shortest way when there were no user:
         //must add protected $fillable or $guarded varible in the model
-        Post::create(request(['title', 'body']));
+        //still possible with user, but have get the id using auth()->user()->id manually and pass it
+        //Post::create(request(['title', 'body']));
+
+
+        auth()->user()->publish(
+            new Post(request(['title', 'body']))
+        );
+
 
 
         return redirect('/');

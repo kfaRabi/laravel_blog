@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 class SessionsController extends Controller
 {
 
+
+    public function __construct(){
+        $this->middleware('guest')->except('destroy');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -23,9 +28,12 @@ class SessionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        if(! auth()->attempt(request(['email', 'password']))){
+            return back()->withErrors(['message' => 'Login credentials do not match']);
+        }
+        return redirect()->home();
     }
 
     /**
@@ -36,7 +44,7 @@ class SessionsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

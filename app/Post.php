@@ -8,6 +8,11 @@ class Post extends Model
 {
     protected $guarded = [];
 
+    //ORM
+    public function user(){
+    	return $this->belongsTo(User::class);
+    }
+
     public function comments(){
     	return $this->hasMany(Comment::class);
     }
@@ -16,4 +21,5 @@ class Post extends Model
     	// $this->comments()->create(['body' => $body]);
     	$this->comments()->create(compact('body'));
     }
+
 }

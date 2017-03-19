@@ -9,6 +9,21 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    // ORM relationships
+    public function posts(){
+        return $this->hasMany(Post::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
+
+    public function publish(Post $post){
+        $this->posts()->save($post);
+    }
+
+
     /**
      * The attributes that are mass assignable.
      *

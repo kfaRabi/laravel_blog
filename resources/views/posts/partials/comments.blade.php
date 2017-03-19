@@ -3,7 +3,8 @@
 	<ul class="list-group">
 		@foreach ($post->comments->sortByDesc('created_at') as $comment)
 			<li class="list-group-item">
-			<strong>{{$comment->created_at->diffForHumans()}}: &nbsp</strong>
+			<i>{{$comment->created_at->diffForHumans()}}</i> &nbsp
+			<strong>{{$comment->user->name}}</strong>: &nbsp
 			{{$comment->body}}</li>
 		@endforeach
 	</ul>
