@@ -33,9 +33,9 @@
           
           </div>
 
-          @yield('sidebar')
+          {{-- @yield('sidebar') --}}
 
-            {{-- @include('layouts.sidebar') --}}
+            @include('layouts.sidebar')
 
 
       </div>

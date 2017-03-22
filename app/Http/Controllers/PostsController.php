@@ -33,13 +33,10 @@ class PostsController extends Controller
 
 
 
-        $archaives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) count')
-        ->groupBy('year', 'month')
-        ->orderByRaw('min(created_at) desc')
-        ->get();
+        // $archaives = Post::archaives();
 
         // pass all the posts to the view and return the view
-        return view('posts.index', compact('posts', 'archaives'));
+        return view('posts.index', compact('posts'));
 
     }
 
