@@ -101,6 +101,10 @@ class PostsController extends Controller
         return redirect('/');
     }
 
+    public function getAllPosts(){
+        
+    }
+
     /**
      * Display the specified resource.
      *

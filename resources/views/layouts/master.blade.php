@@ -15,6 +15,9 @@
 
     <!-- Custom styles for this template -->
     <link href="/css/blog.css" rel="stylesheet">
+
+    {{-- <link rel="stylesheet" href="/css/bulma.css"> --}}
+
   </head>
 
   <body>
@@ -43,7 +46,8 @@
     </div>
 
     @include('layouts.footer');
-
+    <script src="/js/vue.js"></script>
+    <script src="/js/app.js"></script>
   </body>
 
 </html>
