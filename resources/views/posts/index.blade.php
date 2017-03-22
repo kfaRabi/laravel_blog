@@ -22,3 +22,7 @@
 	</nav>
 
 @endsection
+
+@section('sidebar')
+	@include('layouts.sidebar')
+@stop

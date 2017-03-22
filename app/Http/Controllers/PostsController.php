@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -19,10 +20,26 @@ class PostsController extends Controller
      */
     public function index()
     {
+        
         // get all the posts from database
-        $posts = Post::latest()->get();
+        $query = Post::latest()->filter(request(['month', 'year']));
+        // if($month = request('month')){
+        //     $query->whereMonth('created_at' , Carbon::parse($month)->month);
+        // }
+        // if($year = request('year')){
+        //     $query->whereYear('created_at' , $year);
+        // }
+        $posts = $query->get();
+
+
+
+        $archaives = Post::selectRaw('year(created_at) year, monthname(created_at) month, count(*) count')
+        ->groupBy('year', 'month')
+        ->orderByRaw('min(created_at) desc')
+        ->get();
+
         // pass all the posts to the view and return the view
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('posts', 'archaives'));
 
     }
 
