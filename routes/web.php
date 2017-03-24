@@ -7,6 +7,9 @@ Route::post('/posts', 'PostsController@store');
 Route::get('/posts/{post}', 'PostsController@show');
 
 Route::get('/all-posts', 'PostsController@getAllPosts');
+// Route::get('/all-posts', function(){
+// 	return ['A', 'BB', 'CCC'];
+// });
 
 
 Route::post('/posts/{post}/comments', 'CommentsController@store');

@@ -20,7 +20,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        
+        // dd(Post::with(['user' => function($query){
+        //     $query->addSelect(['id', 'name']);
+        // }])->get());
         // get all the posts from database
         $query = Post::latest()->filter(request(['month', 'year']));
         // if($month = request('month')){
@@ -102,7 +104,10 @@ class PostsController extends Controller
     }
 
     public function getAllPosts(){
-        
+        // return ['A', 'B'];
+        return Post::latest()->with(['user' => function($query){
+                    $query->addSelect(['id', 'name']);
+                }])->get();
     }
 
     /**

@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 class CommentsController extends Controller
 {
 
+    public function __construct(){
+        return $this->middleware('auth');
+    }
 
     /**
      * Store a newly created resource in storage.
