@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('blog_header')
-	<p>Just Some Dummy Header</p>
-    {{-- <div id="root">
+	{{-- <p>Just Some Dummy Header</p> --}}
+    <div id="test">
 	    <blog-header>
 	    	<template slot="title">
-	    		Simple Social Network
+	    		Simple BS Blog
 	    	</template>
 	    	Stay Connected and Share Your Thoughts.
 	    </blog-header>
-    </div> --}}
+    </div>
 @endsection
 
 

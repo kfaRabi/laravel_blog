@@ -1,21 +1,21 @@
-// Vue.component('blog-header',{
+Vue.component('blog-header',{
 	
-// 	//props: [],
+	//props: [],
 
-// 	template: `
-// 		<div class="blog-header">
-// 	      <div class="container">
-// 	        <h1 class="blog-title"><slot name="title"> My First Blog </slot></h1>
-// 	        <p class="lead blog-description"><slot>An example blog template built with Bootstrap.</slot></p>
-// 	      </div> 
-// 	    </div>
-// 	`,
+	template: `
+		<div class="blog-header">
+	      <div class="container">
+	        <h1 class="blog-title"><slot name="title"> My First Blog </slot></h1>
+	        <p class="lead blog-description"><slot>An example blog template built with Bootstrap.</slot></p>
+	      </div> 
+	    </div>
+	`,
 
-// 	//methods: {
-// 	//
-// 	//}
+	//methods: {
+	//
+	//}
 
-// });
+});
 
 Vue.component('single-post',{
 	
@@ -85,10 +85,10 @@ Vue.component('posts-list',{
 
 });
 
-// var vapp = new Vue({
-// 	el: "#root",
+var vapp = new Vue({
+	el: "#test",
 
-// });
+});
 
 new Vue({
     el: '#root',
