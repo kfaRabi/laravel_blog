@@ -45,23 +45,10 @@
     </div>
 
     @include('layouts.footer');
+
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src = "https://unpkg.com/vue"></script>
   <script src = "/js/app.js"></script>
- {{--  <script>
-    
-    new Vue({
-      el: '#root',
-      data: {
-        working: "yes",
-        posts: []
-      },
-      mounted(){
-        axios.get('/all-posts').then(response => this.posts = response.data);
-      }
-    });
-
-  </script> --}}
   </body>
 
 </html>

@@ -24,21 +24,22 @@ class PostsController extends Controller
         //     $query->addSelect(['id', 'name']);
         // }])->get());
         // get all the posts from database
-        $query = Post::latest()->filter(request(['month', 'year']));
+        ////$query = Post::latest()->filter(request(['month', 'year']));
         // if($month = request('month')){
         //     $query->whereMonth('created_at' , Carbon::parse($month)->month);
         // }
         // if($year = request('year')){
         //     $query->whereYear('created_at' , $year);
         // }
-        $posts = $query->get();
+        ////$posts = $query->get();
 
 
 
         // $archaives = Post::archaives();
 
         // pass all the posts to the view and return the view
-        return view('posts.index', compact('posts'));
+        return view('posts.index');
+        // return view('posts.index', compact('posts'));
 
     }
 
@@ -105,7 +106,7 @@ class PostsController extends Controller
 
     public function getAllPosts(){
         // return ['A', 'B'];
-        return Post::latest()->with(['user' => function($query){
+        return Post::latest()->filter(request(['month', 'year']))->with(['user' => function($query){
                     $query->addSelect(['id', 'name']);
                 }])->get();
     }

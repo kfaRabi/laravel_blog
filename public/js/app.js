@@ -94,19 +94,36 @@ new Vue({
     el: '#root',
     data: {
         working: "yes",
-        posts: []
+        posts: [],
+        link: '',
     },
     
     methods: {
+    	getLink(){
+    		this.link = window.location.href;
+    		if(this.link.includes("month") || this.link.includes("year")){
+    			var pos = this.link.indexOf("?", 10);
+    			this.link = "/all-posts/" + this.link.substring(pos, this.link.length);
+    		}
+    		else{
+    			this.link = "/all-posts";
+    		}
+    		console.log(this.link);
+    	},
     	getAllPosts(){
-    		axios.get('/all-posts').then(response => this.posts = response.data);
-    	}
+    		this.getLink();
+    		axios.get(this.link).then(response => this.posts = response.data);
+    		console.log(window.location.href);
+    	},
+    },
+
+    computed: {
     },
 
     mounted(){
     	this.getAllPosts();
     	setInterval(function () {
 	     	this.getAllPosts();
-	    }.bind(this), 3000); 
+	    }.bind(this), 300000);
     },
     });
